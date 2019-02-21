@@ -1,4 +1,4 @@
-package io.agileintelligence.ppmtool;
+package com.main.project.ppmtool;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

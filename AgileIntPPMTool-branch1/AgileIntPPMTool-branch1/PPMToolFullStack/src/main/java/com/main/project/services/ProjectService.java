@@ -1,7 +1,8 @@
-package io.agileintelligence.ppmtool.services;
+package com.main.project.services;
 
-import com.example.entity.Project;
-import io.agileintelligence.ppmtool.repositories.ProjectRepository;
+import com.main.project.entity.Project;
+import com.main.project.repositories.ProjectRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +18,12 @@ public class ProjectService {
 
         return projectRepository.save(project);
     }
+    public Optional<Project> getProject(Long id){
+
+        //Logic
+
+        return projectRepository.findById(id);
+    }
+    
 
 }
