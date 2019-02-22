@@ -1,8 +1,11 @@
 package com.main.project.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.util.Date;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Project {
@@ -10,13 +13,28 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @NotBlank(message="Project name should not be blank")
     private String projectName;
+    
+    @NotBlank(message="Project identifier should not be blank")
+    @Size(min=2,max=5,message="Project Identifier should be either 2 or 5 characters")
+    @Column(unique=true)
     private String projectIdentifier;
-    private String description;
+    
+    @NotBlank(message="Project Description is required")
+    private String projectDescription;
+    
+    @JsonFormat(pattern="yyyy-mm-dd")
     private Date start_date;
+    
+    @JsonFormat(pattern="yyyy-mm-dd")
     private Date end_date;
-
+    
+    @JsonFormat(pattern="yyyy-mm-dd")
     private Date created_At;
+    
+    @JsonFormat(pattern="yyyy-mm-dd")
     private Date updated_At;
 
     public Project() {
@@ -46,12 +64,12 @@ public class Project {
         this.projectIdentifier = projectIdentifier;
     }
 
-    public String getDescription() {
-        return description;
+    public String getProjectDescription() {
+        return projectDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
     }
 
     public Date getStart_date() {
